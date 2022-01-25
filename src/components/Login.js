@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Link} from 'react-router-dom';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
@@ -7,8 +6,8 @@ export default function Login() {
     const { push } = useHistory();
     const [state, setState] = useState({
         credentials: {
-            username: '',
-            password: ''
+            username: 'Bloom',
+            password: 'Tech'
         }
     });
 
@@ -23,12 +22,10 @@ export default function Login() {
 
     const handleLogin = e => {
         e.preventDefault();
-        console.log(state.credentials);
         axios.post('http://localhost:9000/api/login', state.credentials)
         .then(res => {
-            console.log(res.data);
             localStorage.setItem('token', res.data.token);
-            push('/friendsList');
+            push('/friends-list');
 
         })
         .catch(err => {
@@ -37,15 +34,6 @@ export default function Login() {
     }
 
   return <div>
-      <header>
-          <h3>FRIENDS DATABASE</h3>
-          <nav>
-              <Link to='/login'>LOGIN</Link>
-              <button>FRIENDS LIST</button>
-              <button>ADD FRIEND</button>
-              <button>LOGOUT</button>
-          </nav>
-      </header>
       <h1>LOGIN</h1>
       <form onSubmit={handleLogin}>
           <input 
