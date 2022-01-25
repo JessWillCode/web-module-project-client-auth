@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
+import AddFriends from './AddFriends';
 
 export default function FriendsList(props) {
 const { friends, setFriends } = props;
