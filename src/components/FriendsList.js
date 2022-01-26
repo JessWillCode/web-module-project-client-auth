@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
-import AddFriends from './AddFriends';
 
 export default function FriendsList(props) {
 const { friends, setFriends } = props;
@@ -16,8 +15,9 @@ useEffect(() => {
         })
     }, []);
 
-  return <div>
-      <h1>FRIENDS LIST</h1>
+  return (
+  <div>
+      {/* <h1>FRIENDS LIST</h1> */}
       {
           friends.map(friend => {
             return (<div key={friend.id} className='friends'>
@@ -25,5 +25,5 @@ useEffect(() => {
             </div>);
           })
       }
-  </div>;
+  </div>);
 }
